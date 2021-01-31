@@ -41,6 +41,8 @@ public class BoardManager : MonoBehaviour
         (posts[2]).Image.sprite = GameManager.Instance.SpriteLibrary.GetSpriteDetails(Quest3.MissingItem).Sprite;
         (posts[2]).Description.text = Quest3.Description;
         (posts[2]).Done.enabled = false;
+
+        QuestManager.Instance.PlaceRandomItems();
     }
 
     private void UpdateQuests()
@@ -49,5 +51,13 @@ public class BoardManager : MonoBehaviour
         (posts[0]).Done.enabled = Quest1.Completed;
         (posts[1]).Done.enabled = Quest2.Completed;
         (posts[2]).Done.enabled = Quest3.Completed;
+
+        WinCheck();
+    }
+
+    public void WinCheck()
+    {
+        if(Quest1.Completed && Quest2.Completed && Quest3.Completed)
+            Debug.Log("You won!");
     }
 }

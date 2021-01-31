@@ -8,6 +8,7 @@ public class QuestManager : MonoBehaviour
     public static QuestManager Instance;
     public List<Quest> Quests;
     public List<Quest> CurrentQuests;
+    public int RandomItemCount = 1;
 
     private void Awake()
     {
@@ -60,28 +61,50 @@ public class QuestManager : MonoBehaviour
 
     public Quest GetNewQuest()
     {
-        bool loop = true;
         Quest quest = null;
-
+        bool loop = true;
         while (loop)
         {
             quest = Quests[Random.Range(0, Quests.Count)];
-            bool found = false;
-            foreach(var test in CurrentQuests)
-            {
-                if (test.MissingItem == quest.MissingItem)
-                    found = true;
-            }
 
-            if (!found)
-            {
-                Quests.Remove(quest);
-                CurrentQuests.Add(quest);
+            if (!QuestItemCheck(quest.MissingItem))
                 loop = false;
-            }
         }
+
+        Quests.Remove(quest);
+        CurrentQuests.Add(quest);
         
         return quest;
+    }
+
+    private bool QuestItemCheck(Item.ItemType item)
+    {
+        foreach(var questItem in CurrentQuests)
+        {
+            if (questItem.MissingItem == item)
+                return true;
+        }
+
+        return false;
+    }
+
+    public void PlaceRandomItems()
+    {
+        for(int i = 0; i < RandomItemCount; i++)
+        {
+            Debug.Log($"RandomItem: { i }");
+            bool loop = true;
+            Quest quest = null;
+
+            while (loop)
+            {
+                quest = Quests[Random.Range(0, Quests.Count)];
+                if (!QuestItemCheck(quest.MissingItem))
+                    loop = false;
+            }
+
+            PlaceQuestItem(quest);
+        }
     }
 
     public void PlaceQuestItem(Quest quest)

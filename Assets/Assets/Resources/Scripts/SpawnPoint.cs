@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SpawnPoint : MonoBehaviour
 {
+    MeshRenderer mesh;
     public float width = 0.5f;
 
     public Color GizmoColor;
@@ -17,5 +18,11 @@ public class SpawnPoint : MonoBehaviour
 
         Gizmos.color = Color.white;
 #endif
+    }
+
+    private void Awake()
+    {
+        mesh = GetComponent<MeshRenderer>();
+        mesh.enabled = false;
     }
 }
