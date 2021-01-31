@@ -16,7 +16,18 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (GameManager.Instance.DidWin)
+        {
+            if (Input.GetButton("Action"))
+            {
+                Debug.Log("Quitting...you quitter");
+                Application.Quit();
+            }
+        }
+        else
+        {
+            Move();
+        }
     }
 
     void Move()
@@ -30,6 +41,9 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Instance.DidWin)
+            return;
+
         if (collision.tag == "Item")
         {
             var item = collision.GetComponent<Item>();

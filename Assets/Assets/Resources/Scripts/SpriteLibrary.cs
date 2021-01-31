@@ -15,6 +15,9 @@ public class SpriteLibrary : MonoBehaviour
     public Sprite Screwdriver;
     public Sprite Wallet;
     public Sprite Cat;
+    public Sprite Phone;
+    public Sprite Baseball;
+    public Sprite Basketball;
     
     private void Awake()
     {
@@ -57,6 +60,27 @@ public class SpriteLibrary : MonoBehaviour
         {
             Sprite = Battery,
             PrefabPath = "Prefabs/item.battery"
+        });
+
+        // phone
+        Items.Add(Item.ItemType.Phone, new SpriteDetails()
+        {
+            Sprite = Phone,
+            PrefabPath = "Prefabs/item.phone"
+        });
+
+        // baseball
+        Items.Add(Item.ItemType.Baseball, new SpriteDetails()
+        {
+            Sprite = Baseball,
+            PrefabPath = "Prefabs/item.baseball"
+        });
+
+        // basketball
+        Items.Add(Item.ItemType.Basketball, new SpriteDetails()
+        {
+            Sprite = Basketball,
+            PrefabPath = "Prefabs/item.basketball"
         });
 
 

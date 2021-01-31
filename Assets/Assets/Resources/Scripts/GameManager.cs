@@ -21,4 +21,6 @@ public class GameManager : MonoBehaviour
         InventoryChangedEvent = new UnityEvent();
         QuestUpdatedEvent = new UnityEvent();
     }
+
+    public bool DidWin = false;
 }

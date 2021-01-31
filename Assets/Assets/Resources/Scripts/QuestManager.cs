@@ -57,6 +57,66 @@ public class QuestManager : MonoBehaviour
             MissingItem = Item.ItemType.Keys,
             Description = "Oh shucks, I can't get to work without my keys. WHATEVER WILL I DO."
         });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Phone,
+            Description = "Little suzie lost her phone again. I swear this is the last phone she's getting. She should probably fine it."
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Phone,
+            Description = "I'm Suzie, I lost my phone and my parents refuse to buy me a new one. If you see it could you return it"
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Phone,
+            Description = "I can't afford another phone, I'll give you a peanut if you find mine"
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Basketball,
+            Description = "Dude bro, I need my basketball back"
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Basketball,
+            Description = "If someone finds a basketball, it's Johnnie's. He's not going to get into college with his grades, so this is kind of needed..."
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Baseball,
+            Description = "Roger is going to be a STAR!11! He needs his baseball to shine though. Damn kid would lose his ass if it wasn't attached."
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Hammer,
+            Description = "It's hammer time..seriously though. I need my hammer...STEVE!"
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Baseball,
+            Description = "I lost my signed Babe Ruth baseball. Please don't steal it and return it."
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Phone,
+            Description = "Cracked my phone, need my old one, but I threw it somewhere"
+        });
+
+        Quests.Add(new Quest()
+        {
+            MissingItem = Item.ItemType.Keys,
+            Description = "locked out of my house, can you look around my keys"
+        });
     }
 
     public Quest GetNewQuest()

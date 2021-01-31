@@ -9,6 +9,9 @@ public class BoardManager : MonoBehaviour
     public Quest Quest2;
     public Quest Quest3;
     private BoardPost[] posts;
+    public Canvas Instructions;
+    public Canvas Win;
+    public Canvas Inventory;
 
     private void Start()
     {
@@ -58,6 +61,11 @@ public class BoardManager : MonoBehaviour
     public void WinCheck()
     {
         if(Quest1.Completed && Quest2.Completed && Quest3.Completed)
-            Debug.Log("You won!");
+        {
+            GameManager.Instance.DidWin = true;
+            Instructions.enabled = false;
+            Inventory.enabled = false;
+            Win.enabled = true;
+        }
     }
 }

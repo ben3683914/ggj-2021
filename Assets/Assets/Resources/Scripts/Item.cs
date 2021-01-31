@@ -16,6 +16,9 @@ public class Item : MonoBehaviour
         Keys,
         Screwdriver,
         Wallet,
-        Cat
+        Cat,
+        Baseball,
+        Basketball,
+        Phone
     }
 }
