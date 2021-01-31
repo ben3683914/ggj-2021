@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class SpriteLibrary : MonoBehaviour
 {
-    //public Dictionary<Item.ItemType, Sprite> Sprites;
     private Dictionary<Item.ItemType, SpriteDetails> Items;
     
     public Sprite None;
@@ -17,7 +16,6 @@ public class SpriteLibrary : MonoBehaviour
     public Sprite Wallet;
     public Sprite Cat;
     
-
     private void Awake()
     {
         Items = new Dictionary<Item.ItemType, SpriteDetails>();
@@ -52,6 +50,22 @@ public class SpriteLibrary : MonoBehaviour
         {
             Sprite = Screwdriver,
             PrefabPath = "Prefabs/item.screwdriver"
+        });
+
+        // battery
+        Items.Add(Item.ItemType.Battery, new SpriteDetails()
+        {
+            Sprite = Battery,
+            PrefabPath = "Prefabs/item.battery"
+        });
+
+
+
+        // keys
+        Items.Add(Item.ItemType.Keys, new SpriteDetails()
+        {
+            Sprite = Keys,
+            PrefabPath = "Prefabs/item.keys"
         });
     }
 

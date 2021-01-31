@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     // events
     public UnityEvent InventoryChangedEvent;
+    public UnityEvent QuestUpdatedEvent;
 
     private void Awake()
     {
@@ -18,5 +19,6 @@ public class GameManager : MonoBehaviour
 
         // events
         InventoryChangedEvent = new UnityEvent();
+        QuestUpdatedEvent = new UnityEvent();
     }
 }

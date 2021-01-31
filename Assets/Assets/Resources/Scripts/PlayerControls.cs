@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using static ReturnLocation;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class PlayerControls : MonoBehaviour
         player = GetComponent<Player>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -40,6 +40,27 @@ public class PlayerControls : MonoBehaviour
             if (inventory.AddItem(item.Type))
             {
                 Destroy(collision.gameObject);
+            }
+        }
+        else if(collision.tag == "ReturnLocation")
+        {
+            var location = collision.GetComponent<ReturnLocation>();
+            foreach(var quest in QuestManager.Instance.CurrentQuests)
+            {
+                bool isFound = false;
+                if (!isFound && player.Inventory.Slot1 == quest.MissingItem && location.Location == quest.ReturnLocation)
+                {
+                    isFound = true;
+                    QuestManager.Instance.CompleteQuest(quest);
+                    player.Inventory.DestroySlot(1);
+                }
+
+                if (!isFound && player.Inventory.Slot2 == quest.MissingItem && location.Location == quest.ReturnLocation)
+                {
+                    isFound = true;
+                    QuestManager.Instance.CompleteQuest(quest);
+                    player.Inventory.DestroySlot(2);
+                }
             }
         }
     }

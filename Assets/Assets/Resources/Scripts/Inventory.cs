@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour
 
         if (isAdded)
         {
-            GameManager.Instance.InventoryChangedEvent.Invoke();
+            UpdateInventory();
             return true;
         }
 
@@ -48,15 +48,17 @@ public class Inventory : MonoBehaviour
 
     public void DropItem(int slot)
     {
+        float nextAllowedPickupTime = 1f;
+
         if (slot == 1)
         {
             if(Slot1 != Item.ItemType.None)
             {
                 GameObject go = null;
                 go = Instantiate(Resources.Load((GameManager.Instance.SpriteLibrary.GetSpriteDetails(Slot1)).PrefabPath), player.transform.position, Quaternion.identity) as GameObject;
-                go.GetComponent<Item>().NextAllowedPickTime = Time.time + 3f;
+                go.GetComponent<Item>().NextAllowedPickTime = Time.time + nextAllowedPickupTime;
                 Slot1 = Item.ItemType.None;
-                GameManager.Instance.InventoryChangedEvent.Invoke();
+                UpdateInventory();
             }
         }
         else if (slot == 2)
@@ -65,10 +67,26 @@ public class Inventory : MonoBehaviour
             {
                 GameObject go = null;
                 go = Instantiate(Resources.Load((GameManager.Instance.SpriteLibrary.GetSpriteDetails(Slot2)).PrefabPath), player.transform.position, Quaternion.identity) as GameObject;
-                go.GetComponent<Item>().NextAllowedPickTime = Time.time + 3f;
+                go.GetComponent<Item>().NextAllowedPickTime = Time.time + nextAllowedPickupTime;
                 Slot2 = Item.ItemType.None;
                 GameManager.Instance.InventoryChangedEvent.Invoke();
             }
         }
+    }
+
+    public void DestroySlot(int slot)
+    {
+        if (slot == 1)
+            Slot1 = Item.ItemType.None;
+
+        if (slot == 2)
+            Slot2 = Item.ItemType.None;
+
+        GameManager.Instance.InventoryChangedEvent.Invoke();
+    }
+
+    public void UpdateInventory()
+    {
+        GameManager.Instance.InventoryChangedEvent.Invoke();
     }
 }
