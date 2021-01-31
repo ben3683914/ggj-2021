@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class SpawnPointManager : MonoBehaviour
 {
+    public static SpawnPointManager Instance;
     public Transform SpawnPoints;
     [SerializeField]
     private List<Transform> OpenSpawns;
@@ -12,6 +13,7 @@ public class SpawnPointManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         OpenSpawns = new List<Transform>();
         UsedSpawns = new List<Transform>();
 

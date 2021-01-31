@@ -84,6 +84,12 @@ public class QuestManager : MonoBehaviour
         return quest;
     }
 
+    public void PlaceQuestItem(Quest quest)
+    {
+        var point = SpawnPointManager.Instance.GetSpawn();
+        var item = Instantiate(Resources.Load(GameManager.Instance.SpriteLibrary.GetSpriteDetails(quest.MissingItem).PrefabPath), point);
+    }
+
     public void CompleteQuest(Quest quest)
     {
         quest.Complete();

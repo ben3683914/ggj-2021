@@ -17,12 +17,15 @@ public class BoardManager : MonoBehaviour
 
         Quest1 = QuestManager.Instance.GetNewQuest();
         Quest1.ReturnLocation = ReturnLocation.ReturnLocations.One;
+        QuestManager.Instance.PlaceQuestItem(Quest1);
 
         Quest2 = QuestManager.Instance.GetNewQuest();
         Quest2.ReturnLocation = ReturnLocation.ReturnLocations.Two;
+        QuestManager.Instance.PlaceQuestItem(Quest2);
 
         Quest3 = QuestManager.Instance.GetNewQuest();
         Quest3.ReturnLocation = ReturnLocation.ReturnLocations.Three;
+        QuestManager.Instance.PlaceQuestItem(Quest3);
 
         // post 1
         (posts[0]).Image.sprite = GameManager.Instance.SpriteLibrary.GetSpriteDetails(Quest1.MissingItem).Sprite;
